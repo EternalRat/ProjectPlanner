@@ -7,11 +7,13 @@
     width: 100%;
 }
 
-.app .div {
+.app > .navbar {
   	height: 100%;
+	width: 5%;
+	background-color: black;
 }
 
-.app .content {
+.app > .content {
 	flex: 1 0 auto;
 }
 
@@ -28,7 +30,7 @@
 	border-radius: 10px;
 }
 
-.app .footer {
+.app > .footer {
 	height: 5vh;
 	flex-shrink: 0;
 	background: #2e2e2e;
