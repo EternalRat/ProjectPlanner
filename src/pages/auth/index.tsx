@@ -9,6 +9,7 @@ export function Login() {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [cookies, setCookie] = useCookies(['token']);
+    const [connected, setConnected] = useState<boolean>(false);
     require("./index.css");
 
     const login = async () => {
@@ -27,7 +28,10 @@ export function Login() {
                 }
             });
             setTimeout(() => {
-                setCookie("token", data.token);
+                setCookie("token", data.token, {
+                    expires: new Date(Date.now() + 21600000)
+                });
+                setConnected(true);
             }, 5000);
         }).catch((err) => {
             let msg;
@@ -89,7 +93,7 @@ export function Login() {
         });
     }
 
-    if (cookies.token) {
+    if (cookies.token || connected === true) {
         return <Navigate to="/dashboard" replace={true}></Navigate>
     }
     return <div className="app">

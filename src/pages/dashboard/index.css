@@ -9,8 +9,10 @@
 
 .app > .navbar {
   	height: 100%;
-	width: 5%;
-	background-color: black;
+	width: 10%;
+	min-width: 159px;
+	background-color: rgb(59, 59, 59);
+	position: sticky;
 }
 
 .app > .content {
