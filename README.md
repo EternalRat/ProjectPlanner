@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Organize Yourself
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+OY is a project that has been made during my free-time when I was a third and fourth year at EPITECH.</br>
+I had nothing else to do, so I thought of a project that could be useful to me and probably a lot of people.
 
-## Available Scripts
+So from that thought was born OY, a to-do list that would help you to remind each things you want to remember.
+For that all you have to do is to create an account on it and then create a to-do.</br>
+You can setup it as you would like to (with the end-date you want) and once the date is coming near the end-date it'll send you an email through the one you specified at the account creation.
 
-In the project directory, you can run:
+## Nomenclature
 
-### `npm start`
+### Branch
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Here are the main branch type that will be use for this project.</br>
+If I feel like I will need a few others, then I will add them here later with their purposes.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- `master` : main branch, the code will (and need!) to be stable.
+- `dev` : as said in the name, it's a dev branch, code may be unstable but shouldn't contains major issues.
+- `feat/` : branch for a new feature
+- `fix/` : branch for a bug fix
+- `docs/` : branch for documentation
 
-### `npm test`
+### Commit
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Here is how I'll do every commit from now on (03/04/2023).</br>
+I'll base my commit nomenclature on commitlint which is a very good nomenclature (for me anyway)
 
-### `npm run build`
+`type(scope?): message`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The type may be :
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `feat` / `feature`
+- `fix`
+- `refactor`
+- `ci`
+- `docs`
+- `perf`
+- `revert`
+- `style`
+- `test`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The scope is like the subject about what has changed in this commit, for example `auth` if what I changed was about the auth. It can also be something more specific such as `login-front` for the login/register on the front-end.</br>
+The scope is optional but is still appreciated, but don't put it if you're modifying something that has no scope.
 
-### `npm run eject`
+## How to setup
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+When I did this project I used Docker to build and run it, so it's up to you to create a docker-compose.yml and to clone the server-side of this project as well. If you do create a docker-compose, it's up to you to change parts of the code that needs to be change.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Whatever you may decide to do, you will at least need to create a .env file at the root of the front which will contains :
+`REACT_APP_API_URL=your base api url`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If you just want to run the front (but nothing will be accessible) you can just do those commands :
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`npm i` => It will download every necessary packages for the project.</br>
+`npm start` => It will launch the project on `localhost:3000`.
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Benjamin Henry - [Github](https://github.com/EternalRat)
