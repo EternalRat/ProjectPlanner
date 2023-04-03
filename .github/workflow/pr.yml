@@ -1,0 +1,27 @@
+on:
+    pull_request:
+        branches:
+            - master
+            - dev
+
+jobs:
+    test-front:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+            - name: install all packages
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: install
+            - name: build the front
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: build
+            - name: Cache node modules
+              uses: actions/cache@v2
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-modules-
