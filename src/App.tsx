@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home, Dashboard, List, Error404, Login, Register } from './pages';
+import { Home, Dashboard, List, Error404, Login, Register } from './domains/pages';
 
 function App(): JSX.Element {
   return (

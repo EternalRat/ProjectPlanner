@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useCookies } from "react-cookie";
 import { Navigate } from "react-router-dom";
 import { ReactNotifications, Store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css'
@@ -8,7 +7,6 @@ import apiClass from "../../utils/api.class";
 export function Login() {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [cookies, setCookie] = useCookies(['token']);
     const [connected, setConnected] = useState<boolean>(false);
     require("./index.css");
 
@@ -28,9 +26,9 @@ export function Login() {
                 }
             });
             setTimeout(() => {
-                setCookie("token", data.token, {
+                /* setCookie("token", data.token, {
                     expires: new Date(Date.now() + 21600000)
-                });
+                }); */
                 setConnected(true);
             }, 5000);
         }).catch((err) => {
@@ -93,9 +91,9 @@ export function Login() {
         });
     }
 
-    if (cookies.token || connected === true) {
+    /* if (cookies.token || connected === true) {
         return <Navigate to="/dashboard" replace={true}></Navigate>
-    }
+    } */
     return <div className="app">
         <div className="body">
             <ReactNotifications />

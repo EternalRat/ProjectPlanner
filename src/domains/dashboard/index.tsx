@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 import { Navigate } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
-import apiClass from "../../utils/api.class";
-import { VIEW } from "../../utils/enum";
-import { User } from "../../utils/interfaces";
+import apiClass from "../utils/api.class";
+import { VIEW } from "../utils/enum";
+import { User } from "../utils/interfaces";
 import { ContactView } from "../../views/ContactView";
 import { DashboardView } from "../../views/DashboardView";
 import { GroupsView } from "../../views/GroupsView";
@@ -13,14 +12,13 @@ import { TodosView } from "../../views/TodosView";
 
 export function Dashboard() {
     require("./index.css");
-    const [cookies, setCookie] = useCookies(['token']);
     const [view, setView] = useState<VIEW>(VIEW.DASHBOARD);
     const [user, setUser] = useState<User>();
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<boolean>(false);
     let page;
     
-    useEffect(() => {
+    /* useEffect(() => {
         apiClass.getUserDetails(cookies).then(({data}) => {
             setUser(data);
             setLoading(false);
@@ -30,7 +28,7 @@ export function Dashboard() {
                 setError(true);
             }
         });
-    }, [cookies]);
+    }, [cookies]); */
     if (loading) {
         return <></>;
     }

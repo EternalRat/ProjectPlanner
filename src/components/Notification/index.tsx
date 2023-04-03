@@ -1,4 +1,3 @@
-import { Fade } from "@mui/material";
 import { useEffect, useState } from "react";
 
 interface INotif {
@@ -30,8 +29,7 @@ export function Notification({timer, header, body, additionnalClass, setNotifica
         }
     }, [setNotification, timer]);
 
-    return <Fade in={true} timeout={1000}>
-        <div className={`app-notification ${additionnalClass ? additionnalClass : ""}`}>
+    return <div className={`app-notification ${additionnalClass ? additionnalClass : ""}`}>
             <div className={`notification ${erase === true ? "erased" : ""}`}>
                 <div className="notification-header">
                     <div className="notification-header-text">
@@ -48,6 +46,5 @@ export function Notification({timer, header, body, additionnalClass, setNotifica
                     <div className="notification-progress-bar-fill" style={{width: `${progress}%`}}></div>
                 </div>
             </div>
-        </div>
-    </Fade>;
+        </div>;
 }

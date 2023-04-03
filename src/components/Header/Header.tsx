@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
-import apiClass from "../../utils/api.class";
-import { User } from "../../utils/interfaces";
+import apiClass from "../../domains/utils/api.class";
+import { User } from "../../domains/utils/interfaces";
 
 export function Header() {
     require("./Header.css");
     const [ user, setUser ] = useState<User>();
     const [ loading, setLoading ] = useState<Boolean>(true);
     const [ scrolled, setScrolled ] = useState<Boolean>(false);
-    const [ cookies ] = useCookies(['token']);
 
 	const handleScroll = () => {
 		const offset = window.scrollY;
@@ -19,12 +17,12 @@ export function Header() {
 			setScrolled(false);
 		}
 	}
-    useEffect(() => {
+    /* useEffect(() => {
         apiClass.getUserDetails(cookies).then(({data}) => {
             setUser(data);
             setLoading(false);
         }).catch(() => setLoading(false));
-    }, [cookies]);
+    }, [cookies]); */
     useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
 	});
