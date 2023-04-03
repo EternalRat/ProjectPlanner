@@ -14,7 +14,7 @@ You can setup it as you would like to (with the end-date you want) and once the 
 Here are the main branch type that will be use for this project.</br>
 If I feel like I will need a few others, then I will add them here later with their purposes.
 
-- `master` : main branch, the code will (and need!) to be stable.
+- `main` : main branch, the code will (and need!) to be stable.
 - `dev` : as said in the name, it's a dev branch, code may be unstable but shouldn't contains major issues.
 - `feat/` : branch for a new feature
 - `fix/` : branch for a bug fix
