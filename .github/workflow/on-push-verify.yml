@@ -1,8 +1,7 @@
 on:
     pull_request:
         branches:
-            - master
-            - dev
+            - *
 
 jobs:
     test-front:
