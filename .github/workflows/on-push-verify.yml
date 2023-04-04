@@ -23,7 +23,7 @@ jobs:
                       ${{ runner.os }}-node-modules-
     
     code-linting-app:
-        needs: Install All Packages
+        needs: install-all-packages
         runs-on: ubuntu-latest
         name: Code linting app
         steps:
