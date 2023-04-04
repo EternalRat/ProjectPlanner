@@ -4,8 +4,9 @@ on:
             - master
 
 jobs:
-    Install All Packages:
+    install-all-packages:
         runs-on: ubuntu-latest
+        name: Install All Packages
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
@@ -21,9 +22,10 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-node-modules-
     
-    Code linting app:
+    code-linting-app:
         needs: Install All Packages
         runs-on: ubuntu-latest
+        name: Code linting app
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
@@ -39,9 +41,10 @@ jobs:
               with:
                   cmd: lint
 
-    Typings app:
-        needs: Code linting app
+    typings-app:
+        needs: code-linting-app
         runs-on: ubuntu-latest
+        name: Typings app
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
@@ -57,9 +60,10 @@ jobs:
               with:
                   cmd: tsc
 
-    Build app:
-        needs: Typings app
+    build-app:
+        needs: typings-app
         runs-on: ubuntu-latest
+        name: Building App
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
