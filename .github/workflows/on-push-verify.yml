@@ -4,7 +4,7 @@ on:
             - master
 
 jobs:
-    test-front:
+    Install All Packages:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
@@ -13,10 +13,6 @@ jobs:
               uses: borales/actions-yarn@v4
               with:
                   cmd: install
-            - name: build the front
-              uses: borales/actions-yarn@v4
-              with:
-                  cmd: build
             - name: Cache node modules
               uses: actions/cache@v2
               with:
@@ -24,3 +20,57 @@ jobs:
                   key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
                   restore-keys: |
                       ${{ runner.os }}-node-modules-
+    
+    Code linting app:
+        needs: Install All Packages
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            - name: Cache node modules
+              uses: actions/cache@v2
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-modules-
+            - name: Run eslint
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: lint
+
+    Typings app:
+        needs: Code linting app
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            - name: Cache node modules
+              uses: actions/cache@v2
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-modules-
+            - name: Run typing app
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: tsc
+
+    Build app:
+        needs: Typings app
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            - name: Cache node modules
+              uses: actions/cache@v2
+              with:
+                  path: node_modules
+                  key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-modules-
+            - name: Build the app
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: build

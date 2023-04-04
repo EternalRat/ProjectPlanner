@@ -3,5 +3,5 @@ export enum VIEW {
     DASHBOARD,
     GROUPS,
     TODOS,
-    CONTACT
+    CONTACT,
 }

@@ -1,4 +1,4 @@
-import { User } from "../domains/utils/interfaces";
+import { User } from '../domains/utils/interfaces';
 
 interface props {
     user: User;

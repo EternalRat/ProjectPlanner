@@ -1,0 +1,34 @@
+{
+    "folders": [
+        {
+            "path": "../client"
+        },
+        {
+            "path": "../server"
+        },
+        {
+            "path": "../docker"
+        }
+    ],
+    "settings": {
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": true,
+        "editor.formatOnSave": true,
+        "prettier.configPath": "./.prettierrc",
+        "prettier.prettierPath": "./node_modules/prettier",
+        "[typescriptreact]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+            "editor.defaultFormatter": "vscode.json-language-features"
+        },
+        "[json]": {
+            "editor.defaultFormatter": "vscode.json-language-features"
+        }
+    }
+}
