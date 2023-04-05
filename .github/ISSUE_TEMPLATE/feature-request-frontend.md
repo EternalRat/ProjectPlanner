@@ -1,8 +1,8 @@
 ---
-name: Feature request
+name: Feature request frontend
 about: Suggest an idea for this project
-title: "[FEATURE]"
-labels: enhancement
+title: "[FEATURE][FRONT]"
+labels: enhancement, front
 assignees: ''
 
 ---
