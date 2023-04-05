@@ -1,0 +1,40 @@
+{
+    "folders": [
+        {
+            "path": "../client"
+        },
+        {
+            "path": "../server"
+        },
+        {
+            "path": "../docker"
+        },
+        {
+            "path": "../.github"
+        },
+        {
+            "path": "../workspace"
+        }
+    ],
+    "settings": {
+        "editor.tabSize": 4,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": true,
+        "editor.formatOnSave": true,
+        "prettier.configPath": "../client/.prettierrc",
+        "prettier.prettierPath": "../client/node_modules/prettier",
+        "[typescriptreact]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+            "editor.defaultFormatter": "vscode.json-language-features"
+        },
+        "[json]": {
+            "editor.defaultFormatter": "vscode.json-language-features"
+        }
+    }
+}
