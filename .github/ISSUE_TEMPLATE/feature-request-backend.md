@@ -1,7 +1,7 @@
 ---
 name: Feature request backend
 about: Suggest an idea for this project
-title: "[FEATURE][BACK]"
+title: "[FEATURE]"
 labels: back, enhancement
 assignees: ''
 
