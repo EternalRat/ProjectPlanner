@@ -1,6 +1,6 @@
 name: test-back
 on:
-    [workflow_call]
+    workflow_call:
     push:
         branches-ignore:
             - master

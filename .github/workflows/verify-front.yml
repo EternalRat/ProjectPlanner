@@ -1,6 +1,6 @@
 name: test-front
 on:
-    [workflow_call]
+    workflow_call:
     push:
         branches-ignore:
             - master
