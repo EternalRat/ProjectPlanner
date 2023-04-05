@@ -1,6 +1,6 @@
-# Need a name
+# Project Planner
 
-Need a name is a project that has been made during my free-time when I was a third and fourth year at EPITECH.</br>
+Project Planner is a project that has been made during my free-time when I was a third and fourth year at EPITECH.</br>
 I had nothing else to do, so I thought of a project that could be useful to me and probably a lot of people.
 
 So from that thought was born OY, a to-do list that would help you to remind each things you want to remember.
