@@ -1,10 +1,12 @@
-# Organize Yourself
+# Need a name
 
-OY is a project that has been made during my free-time when I was a third and fourth year at EPITECH.</br>
+Need a name is a project that has been made during my free-time when I was a third and fourth year at EPITECH.</br>
 I had nothing else to do, so I thought of a project that could be useful to me and probably a lot of people.
 
 So from that thought was born OY, a to-do list that would help you to remind each things you want to remember.
 For that all you have to do is to create an account on it and then create a to-do.</br>
+Right now, I am thinking of expanding its utility to more than a to-do list, for example I am planning to add a project planner to it with many tools such as an issue tracker with differents states (and those could be customized as well).
+
 You can setup it as you would like to (with the end-date you want) and once the date is coming near the end-date it'll send you an email through the one you specified at the account creation.
 
 ## Nomenclature
