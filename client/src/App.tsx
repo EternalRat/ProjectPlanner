@@ -1,32 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import {
-    Home,
-    Dashboard,
-    List,
-    Error404,
-    Login,
-    Register,
-} from './domains/pages';
+import { Error404 } from './views/Error/404';
+import { Home } from './views/Home/Home';
 
 function App() {
     return (
         <Routes>
-            <Route
-                path='dashboard/list'
-                element={<List />}
-            />
-            <Route
-                path='dashboard'
-                element={<Dashboard />}
-            />
-            <Route
-                path='login'
-                element={<Login />}
-            />
-            <Route
-                path='register'
-                element={<Register />}
-            />
             <Route
                 path='/'
                 element={<Home />}
