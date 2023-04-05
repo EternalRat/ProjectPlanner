@@ -22,8 +22,8 @@
         "editor.formatOnPaste": true,
         "editor.formatOnType": true,
         "editor.formatOnSave": true,
-        "prettier.configPath": "./.prettierrc",
-        "prettier.prettierPath": "./node_modules/prettier",
+        "prettier.configPath": "../client/.prettierrc",
+        "prettier.prettierPath": "../client/node_modules/prettier",
         "[typescriptreact]": {
             "editor.defaultFormatter": "esbenp.prettier-vscode"
         },

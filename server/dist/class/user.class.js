@@ -1,91 +1,61 @@
-import Sequelize from 'sequelize';
-import { getUserModel } from '../models';
-import bcrypt from 'bcrypt';
-
-export default class User {
-    private _user = getUserModel();
-    private _rowid: string;
-    private _username: string;
-    private _password: string;
-    private _email: string;
-    private _status: number;
-    private _roles: Array<Sequelize.ModelCtor<Sequelize.Model<any, any>>>;
-
-    constructor() {}
-
-    public get rowid() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const models_1 = require("../models");
+class User {
+    constructor() {
+        this._user = (0, models_1.getUserModel)();
+    }
+    get rowid() {
         return this._rowid;
     }
-
-    public get username() {
+    get username() {
         return this._username;
     }
-
-    public get password() {
+    get password() {
         return this._password;
     }
-
-    public get email() {
+    get email() {
         return this._email;
     }
-
-    public get roles() {
+    get roles() {
         return this._roles;
     }
-
-    public get status() {
+    get status() {
         return this._status;
     }
-
-    public set rowid(rowid: string) {
+    set rowid(rowid) {
         this._rowid = rowid;
     }
-
-    public set username(username: string) {
+    set username(username) {
         this._username = username;
     }
-
-    public set password(password: string) {
+    set password(password) {
         this._password = password;
     }
-
-    public set email(email: string) {
+    set email(email) {
         this._email = email;
     }
-
-    public set status(status: number) {
+    set status(status) {
         this._status = status;
     }
-
-    public set roles(
-        roles: Array<Sequelize.ModelCtor<Sequelize.Model<any, any>>>,
-    ) {
+    set roles(roles) {
         this._roles = roles;
     }
-
-    private _fromModel(model: Sequelize.Model<any, any>) {
-        this._rowid = model.get('id') as string;
-        this._username = model.get('username') as string;
-        this._password = model.get('password') as string;
-        this._email = model.get('email') as string;
-        this._status = model.get('status') as number;
+    _fromModel(model) {
+        this._rowid = model.get('id');
+        this._username = model.get('username');
+        this._password = model.get('password');
+        this._email = model.get('email');
+        this._status = model.get('status');
     }
-
-    public fromPurData(
-        username: string,
-        password: string,
-        email: string,
-        status: number,
-        rowid: string = '',
-    ) {
+    fromPurData(username, password, email, status, rowid = '') {
         this._username = username;
         this._password = password;
         this._email = email;
         this._status = status;
         this._rowid = rowid;
     }
-
-    public async create() {
+    async create() {
         return await this._user.create({
             username: this._username,
             password: this._password,
@@ -93,8 +63,7 @@ export default class User {
             status: 0,
         });
     }
-
-    public async clone() {
+    async clone() {
         return await this._user.create({
             username: this._username,
             password: this._password,
@@ -102,19 +71,18 @@ export default class User {
             status: this._status,
         });
     }
-
-    public async find(id: string) {
+    async find(id) {
         let model = await this._user.findOne({
             where: {
                 id: id,
             },
         });
-        if (!model) return null;
+        if (!model)
+            return null;
         this._fromModel(model);
         return model;
     }
-
-    public async findByEmail(email: string, password?: string) {
+    async findByEmail(email, password) {
         if (password) {
             let model = await this._user.findOne({
                 where: {
@@ -122,7 +90,8 @@ export default class User {
                     password: password,
                 },
             });
-            if (!model) return null;
+            if (!model)
+                return null;
             this._fromModel(model);
             return model;
         }
@@ -131,67 +100,63 @@ export default class User {
                 email: email,
             },
         });
-        if (!model) return null;
+        if (!model)
+            return null;
         this._fromModel(model);
         return model;
     }
-
-    public async findByUsername(username: string) {
+    async findByUsername(username) {
         let model = await this._user.findOne({
             where: {
                 username: username,
             },
         });
-        if (!model) return null;
+        if (!model)
+            return null;
         this._fromModel(model);
         return model;
     }
-
-    public async findAll() {
+    async findAll() {
         return await this._user.findAll();
     }
-
-    public async update() {
-        return await this._user.update(
-            {
-                email: this._email,
-                username: this._username,
-                password: this._password,
-                roles: this._roles,
+    async update() {
+        return await this._user.update({
+            email: this._email,
+            username: this._username,
+            password: this._password,
+            roles: this._roles,
+        }, {
+            where: {
+                id: this._rowid,
             },
-            {
-                where: {
-                    id: this._rowid,
-                },
-            },
-        );
+        });
     }
-
-    public async delete() {
+    async delete() {
         return await this._user.destroy({
             where: {
                 id: this._rowid,
             },
         });
     }
-
-    public async isMailRegistered(email: string) {
+    async isMailRegistered(email) {
         let model = await this._user.findOne({
             where: {
                 email: email,
             },
         });
-        if (!model) return false;
+        if (!model)
+            return false;
         return true;
     }
-
-    public async isUsernameRegistered(username: string) {
+    async isUsernameRegistered(username) {
         let model = await this._user.findOne({
             where: {
                 username: username,
             },
         });
-        if (!model) return false;
+        if (!model)
+            return false;
         return true;
     }
 }
+exports.default = User;

@@ -1,4 +1,10 @@
-import { getUserModel, getRoleModel, getUserRoleModel, getTodoModel, getVerificationModel } from "../models";
+import {
+    getUserModel,
+    getRoleModel,
+    getUserRoleModel,
+    getTodoModel,
+    getVerificationModel,
+} from '../models';
 
 export default async function syncDB() {
     await getUserModel().sync();

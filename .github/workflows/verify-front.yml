@@ -8,9 +8,9 @@ on:
             - dev
 
 jobs:
-    install-all-packages:
+    install-all-packages-front:
         runs-on: ubuntu-latest
-        name: Install All Packages
+        name: Install All Packages Front
         steps:
             - name: Checkout repository
               uses: actions/checkout@v3
@@ -27,10 +27,10 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-node-modules-
     
-    code-linting-app:
-        needs: install-all-packages
+    code-linting-front:
+        needs: [install-all-packages-back, install-all-packages-front]
         runs-on: ubuntu-latest
-        name: Code linting app
+        name: Code linting front
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
@@ -47,10 +47,10 @@ jobs:
                   cmd: lint
                   dir: 'client'
 
-    typings-app:
-        needs: code-linting-app
+    typings-front:
+        needs: [code-linting-front, code-linting-back]
         runs-on: ubuntu-latest
-        name: Typings app
+        name: Typings front
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
@@ -67,10 +67,10 @@ jobs:
                   cmd: tsc
                   dir: 'client'
 
-    build-app:
-        needs: typings-app
+    build-front:
+        needs: [typings-front, typings-back]
         runs-on: ubuntu-latest
-        name: Building App
+        name: Building front
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
@@ -81,7 +81,7 @@ jobs:
                   key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
                   restore-keys: |
                       ${{ runner.os }}-node-modules-
-            - name: Build the app
+            - name: Build the front
               uses: borales/actions-yarn@v4
               with:
                   cmd: build

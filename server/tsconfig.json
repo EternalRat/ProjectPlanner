@@ -29,5 +29,10 @@
     "require": [
       "tsconfig-paths/register"
     ]
-  }
+  },
+  "include": [
+    "src",
+    "babel.config.js",
+    "__tests__"
+  ]
 }
