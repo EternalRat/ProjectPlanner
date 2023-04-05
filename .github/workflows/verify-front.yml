@@ -1,4 +1,6 @@
+name: test-front
 on:
+    [workflow_call]
     push:
         branches-ignore:
             - master
@@ -8,6 +10,8 @@ on:
             - dev
 
 jobs:
+    tests-back:
+        uses: ./.github/workflows/verify-back.yml
     install-all-packages-front:
         runs-on: ubuntu-latest
         name: Install All Packages Front
