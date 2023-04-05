@@ -8,6 +8,12 @@
         },
         {
             "path": "../docker"
+        },
+        {
+            "path": "../.github"
+        },
+        {
+            "path": "../workspace"
         }
     ],
     "settings": {
