@@ -1,6 +1,4 @@
-name: test-front
 on:
-    workflow_call:
     push:
         branches-ignore:
             - master
@@ -10,8 +8,6 @@ on:
             - dev
 
 jobs:
-    tests-back:
-        uses: ./.github/workflows/verify-back.yml
     install-all-packages-front:
         runs-on: ubuntu-latest
         name: Install All Packages Front
@@ -30,6 +26,25 @@ jobs:
                   key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
                   restore-keys: |
                       ${{ runner.os }}-node-modules-
+
+    install-all-packages-back:
+        runs-on: ubuntu-latest
+        name: Install All Packages Back
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+            - name: install all packages
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: install
+                  dir: 'server'
+            - name: Cache node modules
+              uses: actions/cache@v3
+              with:
+                  path: server/node_modules
+                  key: ${{ runner.os }}-back-node-modules-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-back-node-modules-
     
     code-linting-front:
         needs: [install-all-packages-back, install-all-packages-front]
@@ -51,6 +66,26 @@ jobs:
                   cmd: lint
                   dir: 'client'
 
+    code-linting-back:
+        needs: [install-all-packages-back, install-all-packages-front]
+        runs-on: ubuntu-latest
+        name: Code linting back
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            - name: Cache node modules
+              uses: actions/cache@v3
+              with:
+                  path: server/node_modules
+                  key: ${{ runner.os }}-back-node-modules-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-back-node-modules-
+            - name: Run eslint
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: lint
+                  dir: 'server'
+
     typings-front:
         needs: [code-linting-front, code-linting-back]
         runs-on: ubuntu-latest
@@ -70,6 +105,26 @@ jobs:
               with:
                   cmd: tsc
                   dir: 'client'
+
+    typings-back:
+        needs: [code-linting-front, code-linting-back]
+        runs-on: ubuntu-latest
+        name: Typings back
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            - name: Cache node modules
+              uses: actions/cache@v3
+              with:
+                  path: server/node_modules
+                  key: ${{ runner.os }}-back-node-modules-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: |
+                      ${{ runner.os }}-back-node-modules-
+            - name: Run typing back
+              uses: borales/actions-yarn@v4
+              with:
+                  cmd: tsc
+                  dir: 'server'
 
     build-front:
         needs: [typings-front, typings-back]
