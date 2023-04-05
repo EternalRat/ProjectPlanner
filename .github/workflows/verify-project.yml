@@ -1,3 +1,4 @@
+name: Testing the application
 on:
     push:
         branches-ignore:
@@ -6,10 +7,12 @@ on:
         branches:
             - master
             - dev
+        types: [synchronize, opened, reopened, ready_for_review]
 
 jobs:
     install-all-packages-front:
         runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
         name: Install All Packages Front
         steps:
             - name: Checkout repository
@@ -29,6 +32,7 @@ jobs:
 
     install-all-packages-back:
         runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
         name: Install All Packages Back
         steps:
             - name: Checkout repository
@@ -49,6 +53,7 @@ jobs:
     code-linting-front:
         needs: [install-all-packages-back, install-all-packages-front]
         runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
         name: Code linting front
         steps:
             - name: Checkout Repository
@@ -69,6 +74,7 @@ jobs:
     code-linting-back:
         needs: [install-all-packages-back, install-all-packages-front]
         runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
         name: Code linting back
         steps:
             - name: Checkout Repository
@@ -89,6 +95,7 @@ jobs:
     typings-front:
         needs: [code-linting-front, code-linting-back]
         runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
         name: Typings front
         steps:
             - name: Checkout Repository
@@ -109,6 +116,7 @@ jobs:
     typings-back:
         needs: [code-linting-front, code-linting-back]
         runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
         name: Typings back
         steps:
             - name: Checkout Repository
@@ -129,6 +137,7 @@ jobs:
     build-front:
         needs: [typings-front, typings-back]
         runs-on: ubuntu-latest
+        if: github.event.pull_request.draft == false
         name: Building front
         steps:
             - name: Checkout Repository
