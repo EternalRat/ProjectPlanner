@@ -3,8 +3,8 @@ import homeLogo from '../../assets/dashboard/home.png';
 import groupsLogo from '../../assets/dashboard/groups.png';
 import todoLogo from '../../assets/dashboard/todo.png';
 import React from 'react';
-import { User } from '../../domains/utils/interfaces';
-import { VIEW } from '../../domains/utils/enum';
+import { User } from '../../domains/router/interfaces';
+import { VIEW } from '../../domains/router/types';
 
 interface NavbarOptions {
     user: User;

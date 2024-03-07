@@ -35,6 +35,9 @@
         },
         "[json]": {
             "editor.defaultFormatter": "vscode.json-language-features"
-        }
+        },
+        "vscord.app.name": "Visual Studio Code",
+        "vscord.status.details.text.editing": "In Planner - {problems_count} problems found",
+        "vscord.status.state.text.editing": "Working on Planner:{file_name}{file_extension}:{current_line}:{current_column}"
     }
 }
