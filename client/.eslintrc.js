@@ -24,7 +24,7 @@ module.exports = {
         NodeJS: true,
     },
     rules: {
-        'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+        'no-console': ['error', { allow: ['warn', 'error', 'info', 'log'] }],
         'no-unused-vars': 'off',
         'no-prototype-builtins': 'off',
         'no-redeclare': 'off',

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import { Error404 } from './views/Error/404';
 import { Home } from './views/Home/Home';
 import { Projects } from './views/Panel/Project/Projects';
@@ -21,114 +21,82 @@ function App() {
                 path='/'
                 element={<Home />}
             />
-            <Routes location='/panel'>
-                <Routes location='/projects'>
+            <Route
+                key='/panel'
+                element={<Outlet />}>
+                <Route
+                    key='/projects'
+                    element={<Outlet />}>
                     <Route
-                        path='/'
+                        path='panel/projects'
                         element={<Projects />}
                     />
-                    <Routes location='/detail'>
-                        <Routes location='/:id'>
-                            <Route
-                                path='/'
-                                element={<ProjectDetail />}
-                            />
-                            <Route
-                                path='/roadmap'
-                                element={<ProjectRoadmap />}
-                            />
-                            <Route
-                                path='/member'
-                                element={<ProjectMember />}
-                            />
-                            <Route
-                                path='/kanban'
-                                element={<ProjectKanban />}
-                            />
-                            <Route
-                                path='/issues'
-                                element={<ProjectIssues />}
-                            />
-                            <Route
-                                path='/config'
-                                element={<ProjectConfig />}
-                            />
-                            <Route
-                                path='*'
-                                element={<Error404 />}
-                            />
-                        </Routes>
+                    <Route
+                        key='/detail'
+                        element={<Outlet />}>
                         <Route
-                            path='*'
-                            element={<Error404 />}
+                            path='panel/projects/detail/:id'
+                            element={<ProjectDetail />}
                         />
-                    </Routes>
+                        <Route
+                            path='panel/projects/detail/:id/roadmap'
+                            element={<ProjectRoadmap />}
+                        />
+                        <Route
+                            path='panel/projects/detail/:id/member'
+                            element={<ProjectMember />}
+                        />
+                        <Route
+                            path='panel/projects/detail/:id/kanban'
+                            element={<ProjectKanban />}
+                        />
+                        <Route
+                            path='panel/projects/detail/:id/issues'
+                            element={<ProjectIssues />}
+                        />
+                        <Route
+                            path='panel/projects/detail/:id/config'
+                            element={<ProjectConfig />}
+                        />
+                    </Route>
+                </Route>
+                <Route
+                    key='/teams'
+                    element={<Outlet />}>
                     <Route
-                        path='*'
-                        element={<Error404 />}
-                    />
-                </Routes>
-                <Routes location='/teams'>
-                    <Route
-                        path='/'
+                        path='/panel/teams'
                         element={<Teams />}
                     />
-                    <Routes location='/detail'>
-                        <Routes location='/:id'>
-                            <Route
-                                path='/members'
-                                element={<TeamMembers />}
-                            />
-                            <Route
-                                path='/config'
-                                element={<TeamConfig />}
-                            />
-                            <Route
-                                path='*'
-                                element={<Error404 />}
-                            />
-                        </Routes>
+                    <Route
+                        key='/detail'
+                        element={<Outlet />}>
                         <Route
-                            path='*'
-                            element={<Error404 />}
+                            path='/panel/teams/detail/:id/members'
+                            element={<TeamMembers />}
                         />
-                    </Routes>
+                        <Route
+                            path='/panel/teams/detail/:id/config'
+                            element={<TeamConfig />}
+                        />
+                    </Route>
+                </Route>
+                <Route
+                    key='/todolist'
+                    element={<Outlet />}>
                     <Route
-                        path='*'
-                        element={<Error404 />}
-                    />
-                </Routes>
-                <Routes location='/todolist'>
-                    <Route
-                        path='/'
+                        path='/panel/todolist'
                         element={<Todolist />}
                     />
-                    <Routes location='/detail'>
-                        <Routes location='/:id'>
-                            <Route
-                                path='/'
-                                element={<TodolistDetail />}
-                            />
-                            <Route
-                                path='*'
-                                element={<Error404 />}
-                            />
-                        </Routes>
-                        <Route
-                            path='*'
-                            element={<Error404 />}
-                        />
-                    </Routes>
                     <Route
-                        path='*'
-                        element={<Error404 />}
-                    />
-                </Routes>
-                <Route
-                    path='*'
-                    element={<Error404 />}
-                />
-            </Routes>
+                        key='/detail'
+                        element={<Outlet />}>
+                        <Route
+                            path='/panel/todolist/detail/:id'
+                            element={<TodolistDetail />}
+                        />
+                    </Route>
+                </Route>
+            </Route>
             <Route
                 path='*'
                 element={<Error404 />}
