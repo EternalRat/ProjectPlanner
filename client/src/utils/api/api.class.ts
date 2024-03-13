@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { Todo, User } from './interfaces';
+import { User } from '../../domains/auth/types';
+import { Todo } from '../../domains/projects/types';
 
 const apiClass = {
     async login(user: User) {
