@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import apiClass from '../../utils/api/api.class';
-import { User } from '../../domains/router/interfaces';
+import { User } from '../../domains/auth/types';
 
 export function Header() {
     require('./Header.css');
